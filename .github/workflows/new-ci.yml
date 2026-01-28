@@ -1,10 +1,10 @@
-name: New Windows CI Workflow
+name: Windows CI Demo
 
 on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: windows-latest   # 👈 Windows runner
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -15,9 +15,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install pytest
-        run: pip install pytest
+      - name: Install dependencies
+        run: |
+          pip install pytest
+          pip install flask
 
       - name: Run tests
         run: pytest
-        
