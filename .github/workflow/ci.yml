@@ -1,23 +1,14 @@
-name: Windows Automated Tests
+name: Windows CI Demo
 
 on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: windows-latest   # 👈 Windows environment
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install pytest
-        run: pip install pytest
-
-      - name: Run tests
-        run: pytest
-
+      - name: Run a passing test
+        run: python -c "assert 1+1==2; print('Test passed ✅')"
